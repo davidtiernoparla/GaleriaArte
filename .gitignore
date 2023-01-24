@@ -18,3 +18,5 @@ target/test-classes/programacion/galeria/VisualizadorTest.class
 target/test-classes/programacion/galeria/MenuTest.class
 target/classes/programacion/galeria/ObrasArte.class
 target/test-classes/programacion/galeria/ObrasArteTest.class
+target/classes/programacion/galeria/ObraArte.class
+target/test-classes/programacion/galeria/ObraArteTest.class

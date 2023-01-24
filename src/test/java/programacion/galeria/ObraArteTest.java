@@ -1,5 +1,4 @@
 package programacion.galeria;
 
-public class ObrasArte {
-    
+public class ObraArteTest {
 }
