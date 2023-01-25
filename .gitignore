@@ -20,3 +20,5 @@ target/classes/programacion/galeria/ObrasArte.class
 target/test-classes/programacion/galeria/ObrasArteTest.class
 target/classes/programacion/galeria/ObraArte.class
 target/test-classes/programacion/galeria/ObraArteTest.class
+.vscode/settings.json
+target/classes/programacion/galeria/Escultura.class
