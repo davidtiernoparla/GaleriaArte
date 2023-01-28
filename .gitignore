@@ -21,9 +21,13 @@ target/test-classes/programacion/galeria/ObrasArteTest.class
 target/classes/programacion/galeria/ObraArte.class
 target/test-classes/programacion/galeria/ObraArteTest.class
 .vscode/settings.json
+<<<<<<< HEAD
 src/test/java/programacion/galeria/VisualizadorTest.java
 target/classes/programacion/galeria/Escultura.class
 target/classes/programacion/galeria/Escultura$Material.class
 target/classes/programacion/galeria/Pintura.class
 target/classes/programacion/galeria/Pintura$Tecnica.class
 target/test-classes/programacion/galeria/EsculturaTest.class
+=======
+target/classes/programacion/galeria/Escultura.class
+>>>>>>> f21488be79a1a29a6968826dd3d01343a6720265
