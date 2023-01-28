@@ -5,17 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>programacion.galeria</groupId>
-<<<<<<< HEAD
   <artifactId>programacion.galeria</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>programacion.galeria</name>
-=======
-  <artifactId>galeria</artifactId>
-  <version>1.0-SNAPSHOT</version>
-
-  <name>galeria</name>
->>>>>>> f21488be79a1a29a6968826dd3d01343a6720265
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
