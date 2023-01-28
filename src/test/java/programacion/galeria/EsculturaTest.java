@@ -1,5 +1,5 @@
 package programacion.galeria;
 
-public class Visualizador {
+public class EsculturaTest {
     
 }
