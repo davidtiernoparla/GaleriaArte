@@ -14,6 +14,14 @@ public class Pintura extends ObraArte {
 
     private Tecnica tec;
 
+    public Tecnica getTec() {
+        return tec;
+    }
+
+    public void setTec(Tecnica tec) {
+        this.tec = tec;
+    }
+
     public Pintura(int id, String tipo, String nombre, String autor, int precio, int altura, int peso,
             Tecnica tec, int piezas, String desc) {
         super(id, tipo, nombre, autor, precio, altura, peso, piezas, desc);
