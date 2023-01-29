@@ -7,8 +7,8 @@ public abstract class ObraArte {
     private String nombre;
     private String autor;
     private int precio;
-    private int altura;
-    private int peso;
+    private double altura;
+    private double peso;
     private int piezas;
     private String desc;
 
@@ -52,19 +52,19 @@ public abstract class ObraArte {
         this.precio = precio;
     }
 
-    public int getAltura() {
+    public double getAltura() {
         return altura;
     }
 
-    public void setAltura(int altura) {
+    public void setAltura(double altura) {
         this.altura = altura;
     }
 
-    public int getPeso() {
+    public double getPeso() {
         return peso;
     }
 
-    public void setPeso(int peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
     }
 
@@ -87,7 +87,7 @@ public abstract class ObraArte {
     public ObraArte(){
         
     }
-    public ObraArte(int id,String tipo, String nombre, String autor, int precio, int altura, int peso, int piezas, String desc){
+    public ObraArte(int id,String tipo, String nombre, String autor, int precio, double altura, double peso, int piezas, String desc){
         this.id = id;
         this.tipo = tipo;
         this.nombre = nombre;

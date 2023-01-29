@@ -31,3 +31,5 @@ target/test-classes/programacion/galeria/EsculturaTest.class
 =======
 target/classes/programacion/galeria/Escultura.class
 >>>>>>> f21488be79a1a29a6968826dd3d01343a6720265
+target/classes/programacion/galeria/Cargador.class
+target/test-classes/programacion/galeria/CargadorTest.class
