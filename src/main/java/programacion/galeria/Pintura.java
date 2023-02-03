@@ -16,6 +16,7 @@ public class Pintura extends ObraArte {
         }
     }
 
+    static String NOM_CLAS_PINT = Pintura.class.getSimpleName();
     private Tecnica tec;
 
     public Tecnica getTec() {

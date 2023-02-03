@@ -1,7 +1,24 @@
 package programacion.galeria;
 
 public abstract class ObraArte {
-    
+
+    protected static enum Campo {
+        ID("ID"), NOMBRE("Nombre"), AUTOR("Autor"),
+        TEC_MAT("Técnica/Material"), PRECIO("Precio"), 
+        ALTURA("Altura"), PESO ("Peso"), PIEZAS("Pieza/s")
+        , DESC ("Descripción");
+
+        private String val;
+
+        public String getVal() {
+            return val;
+        }
+
+        private Campo(String val) {
+            this.val = val;
+        }
+    }
+
     private int id;
     private String tipo;
     private String nombre;
@@ -84,10 +101,12 @@ public abstract class ObraArte {
         this.desc = desc;
     }
 
-    public ObraArte(){
-        
+    public ObraArte() {
+
     }
-    public ObraArte(int id,String tipo, String nombre, String autor, int precio, double altura, double peso, int piezas, String desc){
+
+    public ObraArte(int id, String tipo, String nombre, String autor, int precio, double altura, double peso,
+            int piezas, String desc) {
         this.id = id;
         this.tipo = tipo;
         this.nombre = nombre;

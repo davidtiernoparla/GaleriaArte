@@ -2,9 +2,9 @@ package programacion.galeria;
 
 public class Menu {
 
-    private void generarMenu(int opcion) {
+    public void generarMenu(int opcion) {
         final int OPCION_VISUALIZAR_DATOS_TODAS = 1;
-        final int OPCION_DAR_UNA = 2;
+        final int OPCION_DAR_ALTA_UNA = 2;
         final int OPCION_MODIFICAR_UNA = 3;
         final int OPCION_VISUALIZAR_DATOS_UNA = 4;
         final int OPCION_VISUALIZAR__PRECIO_UNA = 5;
@@ -16,7 +16,7 @@ public class Menu {
 
                 break;
             // Dar de alta una nueva obra de arte
-            case (OPCION_DAR_UNA):
+            case (OPCION_DAR_ALTA_UNA):
 
                 break;
             // Modificar los datos de las obras expuestas, pide cual modificar al usuario

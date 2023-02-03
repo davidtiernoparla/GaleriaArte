@@ -6,7 +6,7 @@ import programacion.galeria.Pintura.Tecnica;
 public class Cargador {
 
     // Para cargar las 5 obras de arte al inicio
-    private ObraArte[] cargar5ObrasInicio() {
+    protected ObraArte[] cargar5ObrasInicio() {
         final String TIPO_PINTURA = "Pintura";
         final String TIPO_ESCULTURA = "Escultura";
         final String PINTURA_1_NOMBRE = "Guernica";
@@ -22,7 +22,6 @@ public class Cargador {
         final Tecnica PINTURA_1_2_3_4_TECNICA = Tecnica.OLEO;
         final Material ESCULTURA_MATERIAL = Material.ACERO;
         final int CANTIDAD_OBRAS = 5;
-        final int CANTIDAD_PINTURAS = 4;
         final int PINTURA_1_ID = 1;
         final int PINTURA_2_ID = 2;
         final int PINTURA_3_ID = 3;
@@ -34,9 +33,8 @@ public class Cargador {
         final int PINTURA_4_PRECIO = 400;
         final int ESCULTURA_PRECIO = 350;
         final double PINTURA_1_ALTURA = 5;
-        final double PINTURA_2_ALTURA = 1;
+        final double PINTURA_2_4_ALTURA = 1;
         final double PINTURA_3_ALTURA = 1.3;
-        final double PINTURA_4_ALTURA = 5;
         final double ESCULTURA_ALTURA = 1;
         final double PINTURA_1_PESO = 2;
         final double PINTURA_2_3_PESO = 1;
@@ -57,7 +55,7 @@ public class Cargador {
                 PINTURA_1_DESC);
         // P2
         obras[PINTURA_2_ID - 1] = new Pintura(PINTURA_2_ID, TIPO_PINTURA,
-                PINTURA_2_NOMBRE, PINTURA_1_2_3_4_AUTOR, PINTURA_2_PRECIO, PINTURA_2_ALTURA, PINTURA_2_3_PESO,
+                PINTURA_2_NOMBRE, PINTURA_1_2_3_4_AUTOR, PINTURA_2_PRECIO, PINTURA_2_4_ALTURA, PINTURA_2_3_PESO,
                 PINTURA_1_2_3_4_TECNICA, PINTURA_2_3_4_PIEZAS,
                 PINTURA_2_3_4_DESC);
         // P3
@@ -67,7 +65,7 @@ public class Cargador {
                 PINTURA_2_3_4_DESC);
         // P4
         obras[PINTURA_4_ID - 1] = new Pintura(PINTURA_4_ID, TIPO_PINTURA,
-                PINTURA_4_NOMBRE, PINTURA_1_2_3_4_AUTOR, PINTURA_4_PRECIO, PINTURA_4_ALTURA, PINTURA_4_PESO,
+                PINTURA_4_NOMBRE, PINTURA_1_2_3_4_AUTOR, PINTURA_4_PRECIO, PINTURA_2_4_ALTURA, PINTURA_4_PESO,
                 PINTURA_1_2_3_4_TECNICA, PINTURA_2_3_4_PIEZAS,
                 PINTURA_2_3_4_DESC);
         // E5
