@@ -1,4 +1,4 @@
 package programacion.galeria;
 
-public class MatematicoTest {
+public class PosicionadorTest {
 }

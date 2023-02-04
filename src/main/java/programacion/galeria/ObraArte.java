@@ -3,10 +3,9 @@ package programacion.galeria;
 public abstract class ObraArte {
 
     protected static enum Campo {
-        ID("ID"), NOMBRE("Nombre"), AUTOR("Autor"),
-        TEC_MAT("Técnica/Material"), PRECIO("Precio"), 
-        ALTURA("Altura"), PESO ("Peso"), PIEZAS("Pieza/s")
-        , DESC ("Descripción");
+        ID("ID"), NOMBRE("Nombre"), AUTOR("Autor"), TIPO("TIPO"),
+        TEC_MAT("Técnica/Material"), PRECIO("Precio(EUR)"),
+        ALTURA("Altura(m)"), PESO("Peso(t)"), PIEZAS("Pieza/s"), DESC("Descripción");
 
         private String val;
 

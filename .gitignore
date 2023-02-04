@@ -35,3 +35,4 @@ target/classes/programacion/galeria/Cargador.class
 target/test-classes/programacion/galeria/CargadorTest.class
 target/classes/programacion/galeria/ObraArte$Campo.class
 target/classes/programacion/galeria/Posicionador.class
+target/test-classes/programacion/galeria/PosicionadorTest.class
