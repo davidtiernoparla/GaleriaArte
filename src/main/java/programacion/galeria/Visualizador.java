@@ -2,83 +2,119 @@ package programacion.galeria;
 
 public class Visualizador {
     public void visualizarObras(ObraArte[] obras) {
-        final String SEPARADOR_CAMPO = " | ";
-        final String SEPARADOR_TITULO = "   ";
         final int PRIMERA_OBRA = 0;
         final boolean ES_TITULO_CAMPO = true;
-        // Falta printear lo de arriba
-
         for (ObraArte obra : obras) {
             // Si es Pintura imprime datos de Pintura
             if (obra == obras[PRIMERA_OBRA]) {
-                final String SALIDA_TITULO = ObraArte.Campo.ID.getVal()
-                        + justificarCampo(obras, obra, Posicionador.POS_ELEM_ID, ES_TITULO_CAMPO) + SEPARADOR_TITULO
-                        + ObraArte.Campo.NOMBRE.getVal() + justificarCampo(obras, obra, Posicionador.POS_ELEM_NOM, ES_TITULO_CAMPO)
-                        + SEPARADOR_TITULO
-                        + ObraArte.Campo.AUTOR.getVal() + justificarCampo(obras, obra, Posicionador.POS_ELEM_AUT, ES_TITULO_CAMPO)
-                        + SEPARADOR_TITULO + ObraArte.Campo.TEC_MAT.getVal()
-                        + justificarCampo(obras, obra, Posicionador.POS_ELEM_TEC_MAT, ES_TITULO_CAMPO)
-                        + SEPARADOR_TITULO + ObraArte.Campo.PRECIO.getVal()
-                        + justificarCampo(obras, obra, Posicionador.POS_ELEM_PRECIO, ES_TITULO_CAMPO) + SEPARADOR_TITULO
-                        + ObraArte.Campo.ALTURA.getVal() + justificarCampo(obras, obra, Posicionador.POS_ELEM_ALT, ES_TITULO_CAMPO)
-                        + SEPARADOR_TITULO
-                        + ObraArte.Campo.PESO.getVal() + justificarCampo(obras, obra, Posicionador.POS_ELEM_PESO, ES_TITULO_CAMPO)
-                        + SEPARADOR_TITULO
-                        + ObraArte.Campo.PIEZAS.getVal()
-                        + justificarCampo(obras, obra, Posicionador.POS_ELEM_PIEZ, ES_TITULO_CAMPO) + SEPARADOR_TITULO
-                        + ObraArte.Campo.DESC.getVal()
-                        + justificarCampo(obras, obra, Posicionador.POS_ELEM_DESC, ES_TITULO_CAMPO) + SEPARADOR_TITULO;
-                System.out.println(SALIDA_TITULO);
+                imprimirTitulo(obras, ES_TITULO_CAMPO, obra);
             }
             if (obra.getClass().getSimpleName().equals(Pintura.NOM_CLAS_PINT)) {
-                Pintura pintura = (Pintura) obra;
-                final String SALIDA_PINTURA = pintura.getId()
-                        + justificarCampo(obras, pintura, Posicionador.POS_ELEM_ID, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
-                        + pintura.getNombre() + justificarCampo(obras, pintura, Posicionador.POS_ELEM_NOM, !ES_TITULO_CAMPO)
-                        + SEPARADOR_CAMPO
-                        + pintura.getAutor() + justificarCampo(obras, pintura, Posicionador.POS_ELEM_AUT, !ES_TITULO_CAMPO)
-                        + SEPARADOR_CAMPO + pintura.getTec()
-                        + justificarCampo(obras, pintura, Posicionador.POS_ELEM_TEC_MAT, !ES_TITULO_CAMPO)
-                        + SEPARADOR_CAMPO + pintura.getPrecio()
-                        + justificarCampo(obras, pintura, Posicionador.POS_ELEM_PRECIO, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
-                        + pintura.getAltura() + justificarCampo(obras, pintura, Posicionador.POS_ELEM_ALT, !ES_TITULO_CAMPO)
-                        + SEPARADOR_CAMPO
-                        + pintura.getPeso() + justificarCampo(obras, pintura, Posicionador.POS_ELEM_PESO, !ES_TITULO_CAMPO)
-                        + SEPARADOR_CAMPO
-                        + pintura.getPiezas()
-                        + justificarCampo(obras, pintura, Posicionador.POS_ELEM_PIEZ, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
-                        + pintura.getDesc()
-                        + justificarCampo(obras, pintura, Posicionador.POS_ELEM_DESC, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO;
-
-                System.out.println(SALIDA_PINTURA);
-                // Si no, es Escultura e imprime datos de Escultura
+                imprimirPintura(obras, ES_TITULO_CAMPO, obra);
+            // Si no, es Escultura, e imprime datos de Escultura
             } else {
-                Escultura escultura = (Escultura) obra;
-                final String SALIDA_ESCULTURA = escultura.getId()
-                        + justificarCampo(obras, escultura, Posicionador.POS_ELEM_ID, !ES_TITULO_CAMPO)
-                        + SEPARADOR_CAMPO
-                        + escultura.getNombre() + justificarCampo(obras, escultura, Posicionador.POS_ELEM_NOM, !ES_TITULO_CAMPO)
-                        + SEPARADOR_CAMPO
-                        + escultura.getAutor()
-                        + justificarCampo(obras, escultura, Posicionador.POS_ELEM_AUT, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
-                        + escultura.getMat()
-                        + justificarCampo(obras, escultura, Posicionador.POS_ELEM_TEC_MAT, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
-                        + escultura.getPrecio()
-                        + justificarCampo(obras, escultura, Posicionador.POS_ELEM_PRECIO, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
-                        + escultura.getAltura()
-                        + justificarCampo(obras, escultura, Posicionador.POS_ELEM_ALT, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
-                        + escultura.getPeso() + justificarCampo(obras, escultura, Posicionador.POS_ELEM_PESO, !ES_TITULO_CAMPO)
-                        + SEPARADOR_CAMPO
-                        + escultura.getPiezas()
-                        + justificarCampo(obras, escultura, Posicionador.POS_ELEM_PIEZ, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
-                        + escultura.getDesc()
-                        + justificarCampo(obras, escultura, Posicionador.POS_ELEM_DESC, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO;
-
-                System.out.println(SALIDA_ESCULTURA);
+                imprimirEscultura(obras, ES_TITULO_CAMPO, obra);
             }
+        }
+    }
 
+    public void visualizarObra(ObraArte[] obras, String nombre) {
+        final String MENSAJE_DE_NO_ENCONTRADO = "No hay ninguna obra con ese nombre.";
+        final boolean ES_TITULO_CAMPO = true;
+        boolean huboCoincidencia = false;
+        for (ObraArte obra : obras) {
+            if (obra.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
+                if (obra.getClass().getSimpleName().equals(Pintura.NOM_CLAS_PINT)) {
+                    imprimirPintura(obras, ES_TITULO_CAMPO, obra);
+                    // Si no, es Escultura, e imprime datos de Escultura
+                } else {
+                    imprimirEscultura(obras, ES_TITULO_CAMPO, obra);
+                }
+            huboCoincidencia = true;
+            } else if (!huboCoincidencia) {
+                System.out.println(MENSAJE_DE_NO_ENCONTRADO);
+            }
         }
 
+    }
+
+    private void imprimirEscultura(ObraArte[] obras, final boolean ES_TITULO_CAMPO,
+            ObraArte obra) {
+        final String SEPARADOR_CAMPO = " | ";
+        Escultura escultura = (Escultura) obra;
+        final String SALIDA_ESCULTURA = escultura.getId()
+                + justificarCampo(obras, escultura, Posicionador.POS_ELEM_ID, !ES_TITULO_CAMPO)
+                + SEPARADOR_CAMPO
+                + escultura.getNombre() + justificarCampo(obras, escultura, Posicionador.POS_ELEM_NOM, !ES_TITULO_CAMPO)
+                + SEPARADOR_CAMPO
+                + escultura.getAutor()
+                + justificarCampo(obras, escultura, Posicionador.POS_ELEM_AUT, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
+                + escultura.getMat()
+                + justificarCampo(obras, escultura, Posicionador.POS_ELEM_TEC_MAT, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
+                + escultura.getPrecio()
+                + justificarCampo(obras, escultura, Posicionador.POS_ELEM_PRECIO, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
+                + escultura.getAltura()
+                + justificarCampo(obras, escultura, Posicionador.POS_ELEM_ALT, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
+                + escultura.getPeso() + justificarCampo(obras, escultura, Posicionador.POS_ELEM_PESO, !ES_TITULO_CAMPO)
+                + SEPARADOR_CAMPO
+                + escultura.getPiezas()
+                + justificarCampo(obras, escultura, Posicionador.POS_ELEM_PIEZ, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
+                + escultura.getDesc()
+                + justificarCampo(obras, escultura, Posicionador.POS_ELEM_DESC, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO;
+
+        System.out.println(SALIDA_ESCULTURA);
+    }
+
+    private void imprimirPintura(ObraArte[] obras, final boolean ES_TITULO_CAMPO,
+            ObraArte obra) {
+        final String SEPARADOR_CAMPO = " | ";
+        Pintura pintura = (Pintura) obra;
+        final String SALIDA_PINTURA = pintura.getId()
+                + justificarCampo(obras, pintura, Posicionador.POS_ELEM_ID, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
+                + pintura.getNombre() + justificarCampo(obras, pintura, Posicionador.POS_ELEM_NOM, !ES_TITULO_CAMPO)
+                + SEPARADOR_CAMPO
+                + pintura.getAutor() + justificarCampo(obras, pintura, Posicionador.POS_ELEM_AUT, !ES_TITULO_CAMPO)
+                + SEPARADOR_CAMPO + pintura.getTec()
+                + justificarCampo(obras, pintura, Posicionador.POS_ELEM_TEC_MAT, !ES_TITULO_CAMPO)
+                + SEPARADOR_CAMPO + pintura.getPrecio()
+                + justificarCampo(obras, pintura, Posicionador.POS_ELEM_PRECIO, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
+                + pintura.getAltura() + justificarCampo(obras, pintura, Posicionador.POS_ELEM_ALT, !ES_TITULO_CAMPO)
+                + SEPARADOR_CAMPO
+                + pintura.getPeso() + justificarCampo(obras, pintura, Posicionador.POS_ELEM_PESO, !ES_TITULO_CAMPO)
+                + SEPARADOR_CAMPO
+                + pintura.getPiezas()
+                + justificarCampo(obras, pintura, Posicionador.POS_ELEM_PIEZ, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO
+                + pintura.getDesc()
+                + justificarCampo(obras, pintura, Posicionador.POS_ELEM_DESC, !ES_TITULO_CAMPO) + SEPARADOR_CAMPO;
+
+        System.out.println(SALIDA_PINTURA);
+    }
+
+    private void imprimirTitulo(ObraArte[] obras, final boolean ES_TITULO_CAMPO,
+            ObraArte obra) {
+        final String SEPARADOR_TITULO = "   ";
+        final String SALIDA_TITULO = ObraArte.Campo.ID.getVal()
+                + justificarCampo(obras, obra, Posicionador.POS_ELEM_ID, ES_TITULO_CAMPO) + SEPARADOR_TITULO
+                + ObraArte.Campo.NOMBRE.getVal()
+                + justificarCampo(obras, obra, Posicionador.POS_ELEM_NOM, ES_TITULO_CAMPO)
+                + SEPARADOR_TITULO
+                + ObraArte.Campo.AUTOR.getVal()
+                + justificarCampo(obras, obra, Posicionador.POS_ELEM_AUT, ES_TITULO_CAMPO)
+                + SEPARADOR_TITULO + ObraArte.Campo.TEC_MAT.getVal()
+                + justificarCampo(obras, obra, Posicionador.POS_ELEM_TEC_MAT, ES_TITULO_CAMPO)
+                + SEPARADOR_TITULO + ObraArte.Campo.PRECIO.getVal()
+                + justificarCampo(obras, obra, Posicionador.POS_ELEM_PRECIO, ES_TITULO_CAMPO) + SEPARADOR_TITULO
+                + ObraArte.Campo.ALTURA.getVal()
+                + justificarCampo(obras, obra, Posicionador.POS_ELEM_ALT, ES_TITULO_CAMPO)
+                + SEPARADOR_TITULO
+                + ObraArte.Campo.PESO.getVal()
+                + justificarCampo(obras, obra, Posicionador.POS_ELEM_PESO, ES_TITULO_CAMPO)
+                + SEPARADOR_TITULO
+                + ObraArte.Campo.PIEZAS.getVal()
+                + justificarCampo(obras, obra, Posicionador.POS_ELEM_PIEZ, ES_TITULO_CAMPO) + SEPARADOR_TITULO
+                + ObraArte.Campo.DESC.getVal()
+                + justificarCampo(obras, obra, Posicionador.POS_ELEM_DESC, ES_TITULO_CAMPO) + SEPARADOR_TITULO;
+        System.out.println(SALIDA_TITULO);
     }
 
     private String justificarCampo(ObraArte[] obras, ObraArte obra, int posElem, boolean esTitulo) {
