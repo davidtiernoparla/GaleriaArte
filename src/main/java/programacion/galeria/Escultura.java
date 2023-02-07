@@ -23,8 +23,14 @@ public class Escultura extends ObraArte {
         return mat;
     }
 
-    public void setMaterial(Material mat) {
-        this.mat = mat;
+    public void setMat(String tecnicaEscogida) {
+        if (tecnicaEscogida.equals(Escultura.Material.ACERO.getVal())){
+            this.mat = Escultura.Material.ACERO;
+        } else if (tecnicaEscogida.equals(Escultura.Material.COBRE.getVal())){
+            this.mat = Escultura.Material.COBRE;
+        } else {
+            this.mat = Escultura.Material.HIERRO;
+        }
     }
 
     public Escultura(int id, String tipo, String nombre, String autor, int precio, double altura, double peso,

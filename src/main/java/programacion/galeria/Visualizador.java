@@ -1,6 +1,7 @@
 package programacion.galeria;
 
 public class Visualizador {
+    
     public void visualizarObras(ObraArte[] obras) {
         final int PRIMERA_OBRA = 0;
         final boolean ES_TITULO_CAMPO = true;
