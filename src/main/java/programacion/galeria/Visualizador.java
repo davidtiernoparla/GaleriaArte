@@ -1,8 +1,7 @@
 package programacion.galeria;
 
 public class Visualizador {
-
-    public void visualizarObras(ObraArte[] obras) {
+     public static void visualizarObras(ObraArte[] obras) {
         final int PRIMERA_OBRA = 0;
         final boolean ES_TITULO_CAMPO = true;
         for (ObraArte obra : obras) {
@@ -39,7 +38,7 @@ public class Visualizador {
 
     }
 
-    private void imprimirEscultura(ObraArte[] obras, final boolean ES_TITULO_CAMPO,
+    private static void imprimirEscultura(ObraArte[] obras, final boolean ES_TITULO_CAMPO,
             ObraArte obra) {
         final String SEPARADOR_CAMPO = " | ";
         Escultura escultura = (Escultura) obra;
@@ -66,7 +65,7 @@ public class Visualizador {
         System.out.println(SALIDA_ESCULTURA);
     }
 
-    private void imprimirPintura(ObraArte[] obras, final boolean ES_TITULO_CAMPO,
+    private static void imprimirPintura(ObraArte[] obras, final boolean ES_TITULO_CAMPO,
             ObraArte obra) {
         final String SEPARADOR_CAMPO = " | ";
         Pintura pintura = (Pintura) obra;
@@ -91,7 +90,7 @@ public class Visualizador {
         System.out.println(SALIDA_PINTURA);
     }
 
-    private void imprimirTitulo(ObraArte[] obras, final boolean ES_TITULO_CAMPO,
+    private static void imprimirTitulo(ObraArte[] obras, final boolean ES_TITULO_CAMPO,
             ObraArte obra) {
         final String SEPARADOR_TITULO = "   ";
         final String SALIDA_TITULO = ObraArte.Campo.ID.getVal()
@@ -118,7 +117,7 @@ public class Visualizador {
         System.out.println(SALIDA_TITULO);
     }
 
-    private String justificarCampo(ObraArte[] obras, ObraArte obra, int posElem, boolean esTitulo) {
+    private static String justificarCampo(ObraArte[] obras, ObraArte obra, int posElem, boolean esTitulo) {
         final String ESPACIO = " ";
 
         String espacios = "";
@@ -211,7 +210,7 @@ public class Visualizador {
         return espacios;
     }
 
-    private String imprimirEspacios(final String ESPACIO, int diferencia) {
+    private static String imprimirEspacios(final String ESPACIO, int diferencia) {
         String espacios = ESPACIO;
         for (int i = 0; i < diferencia; i++) {
             espacios += ESPACIO;
@@ -219,7 +218,7 @@ public class Visualizador {
         return espacios;
     }
 
-    private int hallarMaxLong(ObraArte[] obras, int posElem) {
+    private static int hallarMaxLong(ObraArte[] obras, int posElem) {
         final String NOM_CLAS_PINT = "Pintura";
 
         int maxLong = 0;

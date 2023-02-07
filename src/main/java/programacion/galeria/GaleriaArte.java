@@ -11,6 +11,6 @@ public class GaleriaArte {
         Visualizador visual = new Visualizador();
         
         ObraArte[] obras = cargador.cargar5ObrasInicio();
-        visual.visualizarObras(obras);
+        Visualizador.visualizarObras(obras);
     }
 }
