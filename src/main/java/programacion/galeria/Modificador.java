@@ -3,7 +3,6 @@ package programacion.galeria;
 public class Modificador {
 
     public ObraArte modificarObra(ObraArte[] obras, ObraArte obra) {
-        final String RESULTADO_FINAL = "La obra tras modificarse:";
         final String RECORDATORIO_VALOR__CAMPO_ID = "El valor actual de" + ObraArte.Campo.ID + "es:" + obra.getId();
         final String RECORDATORIO_VALOR__CAMPO_TIPO = "El valor actual de" + ObraArte.Campo.TIPO + "es:"
                 + obra.getTipo();

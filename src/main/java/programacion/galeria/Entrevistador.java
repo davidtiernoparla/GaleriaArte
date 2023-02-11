@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Entrevistador {
 
+    
     public static int preguntarDatoUsuarioInt(ObraArte.Campo campo) {
         final String PETICION_VALOR = "Indique el valor de: " + campo.getVal();
         final String PETICION_RECTIFICAR = "Introduzca un numero positivo (o 0) para el campo: "

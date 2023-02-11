@@ -362,7 +362,6 @@ public class Visualizador {
         } else {
             precioVenta = precioVenta + (precioVenta * DESCUENTO_ESCULTURA) + COMISION_ESCULTURA;
         }
-        final String MENSAJE_PRECIO_VENTA_FINAL = "Precio final de venta(EUR): " + precioVenta;
         System.out.println(MENSAJE_NOMBRE);
         System.out.println(MENSAJE_ALTURA);
         System.out.println(MENSAJE_PESO);

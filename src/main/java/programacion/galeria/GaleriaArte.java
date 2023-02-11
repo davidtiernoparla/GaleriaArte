@@ -6,11 +6,8 @@ package programacion.galeria;
  */
 public class GaleriaArte {
     public static void main(String[] args) {
-        Cargador cargador = new Cargador();
+        ObraArte[] obras = Cargador.cargar5ObrasInicio();
         Menu menu = new Menu();
-        Visualizador visual = new Visualizador();
-        
-        ObraArte[] obras = cargador.cargar5ObrasInicio();
-        Visualizador.visualizarObras(obras);
+        menu.lanzarMenu(obras);
     }
 }

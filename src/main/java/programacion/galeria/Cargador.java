@@ -6,7 +6,7 @@ import programacion.galeria.Pintura.Tecnica;
 public class Cargador {
 
         // Para cargar las 5 obras de arte al inicio
-        protected ObraArte[] cargar5ObrasInicio() {
+        protected static ObraArte[] cargar5ObrasInicio() {
                 final String TIPO_PINTURA = "Pintura";
                 final String TIPO_ESCULTURA = "Escultura";
                 final String PINTURA_1_NOMBRE = "Guernica";
@@ -80,7 +80,7 @@ public class Cargador {
                 return obras;
         }
 
-        protected ObraArte[] insertarObraArte(ObraArte[] obras) {
+        protected static ObraArte[] insertarObraArte(ObraArte[] obras) {
                 final int INCREMENTO_1 = 1;
                 final int RESTA_1 = -1;
                 // copio el contenido de obras en nuevaObras
