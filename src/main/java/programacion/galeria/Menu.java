@@ -1,6 +1,5 @@
 package programacion.galeria;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Menu {
@@ -32,29 +31,28 @@ public class Menu {
         System.out.println(MENSAJE_LINEAS);
     }
 
-    public void lanzarMenu(ObraArte[] obras) {
+    public void lanzarMenu(ObraArte[] obras, Scanner teclado) {
         mostrarMenu();
-        ejecutarOpcionMenu(recibirInputInt(obras), obras);
+        ejecutarOpcionMenu(recibirInputInt(obras, teclado), obras, teclado);
     }
 
-    private int recibirInputInt(ObraArte[] obras) {
+    private int recibirInputInt(ObraArte[] obras, Scanner teclado) {
         final int LIMITE_INFERIOR = 0;
         final int LIMITE_SUPERIOR = 6;
         String numRecibido = new String();
-
-        try (Scanner teclado = new Scanner(System.in)) {
-            do {
-                numRecibido = teclado.next();
-                if ((!numRecibido.matches("["+ LIMITE_INFERIOR + "-" + LIMITE_SUPERIOR+ "]"))){
-                    System.out.println("El valor introducido es incorrecto, por favor pulse un numero entre " + LIMITE_INFERIOR + " y " + LIMITE_SUPERIOR + ".");
-                }
-                //"[0-6]"
-            } while (!numRecibido.matches("["+ LIMITE_INFERIOR + "-" + LIMITE_SUPERIOR+ "]"));
-        }
+        do {
+            numRecibido = teclado.next();
+            if ((!numRecibido.matches("[" + LIMITE_INFERIOR + "-" + LIMITE_SUPERIOR + "]"))) {
+                System.out.println("El valor introducido es incorrecto, por favor pulse un numero entre "
+                        + LIMITE_INFERIOR + " y " + LIMITE_SUPERIOR + ".");
+            }
+            // "[0-6]"
+        } while (!numRecibido.matches("[" + LIMITE_INFERIOR + "-" + LIMITE_SUPERIOR + "]"));
         return Integer.parseInt(numRecibido);
     }
 
-    private void ejecutarOpcionMenu(int opcion, ObraArte[] obras) {
+    private void ejecutarOpcionMenu(int opcion, ObraArte[] obras, Scanner teclado) {
+        final int OPCION_SALIR = 0;
         final int OPCION_VISUALIZAR_DATOS_TODAS = 1;
         final int OPCION_DAR_ALTA_UNA = 2;
         final int OPCION_MODIFICAR_UNA = 3;
@@ -63,13 +61,15 @@ public class Menu {
         final int OPCION_VISUALIZAR_ETIQUETA_UNA = 6;
         int opcionElegida = opcion;
         switch (opcionElegida) {
+            case (OPCION_SALIR):
+                break;
             // Visualizar las obras de arte existentes. Permite Conocer todas las expuestas.
             case (OPCION_VISUALIZAR_DATOS_TODAS):
                 Visualizador.visualizarObras(obras);
                 break;
             // Dar de alta una nueva obra de arte
             case (OPCION_DAR_ALTA_UNA):
-                
+                Cargador.insertarObraArte(obras);
                 break;
             // Modificar los datos de las obras expuestas, pide cual modificar al usuario
             case (OPCION_MODIFICAR_UNA):
@@ -77,17 +77,17 @@ public class Menu {
                 break;
             // Visualizar los datos de las obras expuestas, pide cual mostrar al usuario
             case (OPCION_VISUALIZAR_DATOS_UNA):
-
+                Visualizador.visualizarObra(obras, Entrevistador.preguntarUsuarioObra(obras));
                 break;
             // Obtener el precio de las obras de arte expuestas, pide cual mostrar al
             // usuario
             case (OPCION_VISUALIZAR__PRECIO_UNA):
-
+                ObraArte.sacarPrecioVenta(obras, Entrevistador.preguntarUsuarioObra(obras));
                 break;
             // Mostrar una etiqueta para clasificar una de las obras expuestas y dar
             // informcion extra
             case (OPCION_VISUALIZAR_ETIQUETA_UNA):
-
+                Visualizador.mostrarEtiqueta(obras, Entrevistador.preguntarUsuarioObra(obras));
                 break;
         }
     }

@@ -15,6 +15,7 @@ public class Escultura extends ObraArte {
             this.val = val;
         }
     }
+
     static String NOM_CLAS_ESC = Escultura.class.getSimpleName();
 
     private Material mat;
@@ -24,9 +25,9 @@ public class Escultura extends ObraArte {
     }
 
     public void setMat(String tecnicaEscogida) {
-        if (tecnicaEscogida.equals(Escultura.Material.ACERO.getVal())){
+        if (tecnicaEscogida.equals(Escultura.Material.ACERO.getVal())) {
             this.mat = Escultura.Material.ACERO;
-        } else if (tecnicaEscogida.equals(Escultura.Material.COBRE.getVal())){
+        } else if (tecnicaEscogida.equals(Escultura.Material.COBRE.getVal())) {
             this.mat = Escultura.Material.COBRE;
         } else {
             this.mat = Escultura.Material.HIERRO;

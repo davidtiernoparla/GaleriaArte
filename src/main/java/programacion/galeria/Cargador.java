@@ -88,52 +88,52 @@ public class Cargador {
                 for (int i = 0; i < obras.length;) {
                         nuevaObras[i] = obras[i];
                 }
-                        final String TIPO = Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.TIPO);
-                        final String NOMBRE = Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.NOMBRE);
-                        final String AUTOR = Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.AUTOR);
-                        final String DESC = Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.DESC);
+                final String TIPO = Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.TIPO);
+                final String NOMBRE = Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.NOMBRE);
+                final String AUTOR = Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.AUTOR);
+                final String DESC = Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.DESC);
 
-                        final int ID = nuevaObras.length;
-                        final int PRECIO = Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.PRECIO);
-                        final double ALTURA = Entrevistador.preguntarDatoUsuarioDouble(ObraArte.Campo.ALTURA);
-                        final double PESO = Entrevistador.preguntarDatoUsuarioDouble(ObraArte.Campo.PESO);
-                        final int PIEZAS = Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.PIEZAS);
-                        if (TIPO.equals(Pintura.NOM_CLAS_PINT)) {
-                                final String TECNICA = Entrevistador
-                                                .preguntarDatoUsuarioTecnica(ObraArte.Campo.TEC_MAT);
-                                // creo la nueva pintura y la introduzco
-                                if (TECNICA.equals(Pintura.Tecnica.OLEO.getVal())) {
-                                        nuevaObras[nuevaObras.length + RESTA_1] = new Pintura(ID, TIPO, NOMBRE, AUTOR,
-                                                        PRECIO,
-                                                        ALTURA, PESO, Pintura.Tecnica.OLEO, PIEZAS, DESC);
-                                } else if (TECNICA.equals(Pintura.Tecnica.ACUARELA.getVal())) {
-                                        nuevaObras[nuevaObras.length + RESTA_1] = new Pintura(ID, TIPO, NOMBRE, AUTOR,
-                                                        PRECIO,
-                                                        ALTURA, PESO, Pintura.Tecnica.ACUARELA, PIEZAS, DESC);
-                                } else {
-                                        nuevaObras[nuevaObras.length + RESTA_1] = new Pintura(ID, TIPO, NOMBRE, AUTOR,
-                                                        PRECIO,
-                                                        ALTURA, PESO, Pintura.Tecnica.CARBONCILLO, PIEZAS, DESC);
-                                }
-
+                final int ID = nuevaObras.length;
+                final int PRECIO = Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.PRECIO);
+                final double ALTURA = Entrevistador.preguntarDatoUsuarioDouble(ObraArte.Campo.ALTURA);
+                final double PESO = Entrevistador.preguntarDatoUsuarioDouble(ObraArte.Campo.PESO);
+                final int PIEZAS = Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.PIEZAS);
+                if (TIPO.equals(Pintura.NOM_CLAS_PINT)) {
+                        final String TECNICA = Entrevistador
+                                        .preguntarDatoUsuarioTecnica(ObraArte.Campo.TEC_MAT);
+                        // creo la nueva pintura y la introduzco
+                        if (TECNICA.equals(Pintura.Tecnica.OLEO.getVal())) {
+                                nuevaObras[nuevaObras.length + RESTA_1] = new Pintura(ID, TIPO, NOMBRE, AUTOR,
+                                                PRECIO,
+                                                ALTURA, PESO, Pintura.Tecnica.OLEO, PIEZAS, DESC);
+                        } else if (TECNICA.equals(Pintura.Tecnica.ACUARELA.getVal())) {
+                                nuevaObras[nuevaObras.length + RESTA_1] = new Pintura(ID, TIPO, NOMBRE, AUTOR,
+                                                PRECIO,
+                                                ALTURA, PESO, Pintura.Tecnica.ACUARELA, PIEZAS, DESC);
                         } else {
-                                final String MATERIAL = Entrevistador
-                                                .preguntarDatoUsuarioMaterial(ObraArte.Campo.TEC_MAT);
-                                // creo la nueva escultura y la introduzco
-                                if (MATERIAL.equals(Escultura.Material.ACERO.getVal())) {
-                                        nuevaObras[nuevaObras.length + RESTA_1] = new Escultura(ID, TIPO, NOMBRE, AUTOR,
-                                                        PRECIO,
-                                                        ALTURA, PESO, Escultura.Material.ACERO, PIEZAS, DESC);
-                                } else if (MATERIAL.equals(Escultura.Material.ACERO.getVal())) {
-                                        nuevaObras[nuevaObras.length + RESTA_1] = new Escultura(ID, TIPO, NOMBRE, AUTOR,
-                                                        PRECIO,
-                                                        ALTURA, PESO, Escultura.Material.COBRE, PIEZAS, DESC);
-                                } else {
-                                        nuevaObras[nuevaObras.length + RESTA_1] = new Escultura(ID, TIPO, NOMBRE, AUTOR,
-                                                        PRECIO,
-                                                        ALTURA, PESO, Escultura.Material.HIERRO, PIEZAS, DESC);
-                                }
+                                nuevaObras[nuevaObras.length + RESTA_1] = new Pintura(ID, TIPO, NOMBRE, AUTOR,
+                                                PRECIO,
+                                                ALTURA, PESO, Pintura.Tecnica.CARBONCILLO, PIEZAS, DESC);
                         }
+
+                } else {
+                        final String MATERIAL = Entrevistador
+                                        .preguntarDatoUsuarioMaterial(ObraArte.Campo.TEC_MAT);
+                        // creo la nueva escultura y la introduzco
+                        if (MATERIAL.equals(Escultura.Material.ACERO.getVal())) {
+                                nuevaObras[nuevaObras.length + RESTA_1] = new Escultura(ID, TIPO, NOMBRE, AUTOR,
+                                                PRECIO,
+                                                ALTURA, PESO, Escultura.Material.ACERO, PIEZAS, DESC);
+                        } else if (MATERIAL.equals(Escultura.Material.ACERO.getVal())) {
+                                nuevaObras[nuevaObras.length + RESTA_1] = new Escultura(ID, TIPO, NOMBRE, AUTOR,
+                                                PRECIO,
+                                                ALTURA, PESO, Escultura.Material.COBRE, PIEZAS, DESC);
+                        } else {
+                                nuevaObras[nuevaObras.length + RESTA_1] = new Escultura(ID, TIPO, NOMBRE, AUTOR,
+                                                PRECIO,
+                                                ALTURA, PESO, Escultura.Material.HIERRO, PIEZAS, DESC);
+                        }
+                }
                 return nuevaObras;
         }
 }

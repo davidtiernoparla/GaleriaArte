@@ -24,9 +24,9 @@ public class Pintura extends ObraArte {
     }
 
     public void setTec(String tecnicaEscogida) {
-        if (tecnicaEscogida.equals(Pintura.Tecnica.OLEO.getVal())){
+        if (tecnicaEscogida.equals(Pintura.Tecnica.OLEO.getVal())) {
             this.tec = Pintura.Tecnica.OLEO;
-        } else if (tecnicaEscogida.equals(Pintura.Tecnica.CARBONCILLO.getVal())){
+        } else if (tecnicaEscogida.equals(Pintura.Tecnica.CARBONCILLO.getVal())) {
             this.tec = Pintura.Tecnica.CARBONCILLO;
         } else {
             this.tec = Pintura.Tecnica.ACUARELA;

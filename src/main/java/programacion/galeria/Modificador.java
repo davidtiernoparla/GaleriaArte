@@ -24,9 +24,8 @@ public class Modificador {
                 + obra.getPiezas();
         final String RECORDATORIO_VALOR__CAMPO_DESC = "El valor actual de" + ObraArte.Campo.DESC + "es:"
                 + obra.getDesc();
-        Visualizador visualizador = new Visualizador();
         System.out.println("La obra que desea modificar se encuentra de la siguiente manera:");
-        visualizador.visualizarObra(obras, obra.getNombre());
+        Visualizador.visualizarObra(obras, obra.getNombre());
 
         System.out.println(RECORDATORIO_VALOR__CAMPO_ID);
         if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.ID.getVal())) {
@@ -78,7 +77,7 @@ public class Modificador {
         if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.DESC.getVal())) {
             obra.setDesc(Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.DESC));
         }
-        visualizador.visualizarObra(obras, obra.getNombre());
+        Visualizador.visualizarObra(obras, obra.getNombre());
         return obra;
     }
 }

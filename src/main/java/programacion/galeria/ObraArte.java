@@ -1,5 +1,7 @@
 package programacion.galeria;
 
+import java.util.function.Predicate;
+
 public abstract class ObraArte {
 
     protected static enum Campo {
@@ -99,6 +101,7 @@ public abstract class ObraArte {
     public void setDesc(String desc) {
         this.desc = desc;
     }
+
     public ObraArte(int id, String tipo, String nombre, String autor, int precio, double altura, double peso,
             int piezas, String desc) {
         this.id = id;
@@ -112,4 +115,17 @@ public abstract class ObraArte {
         this.desc = desc;
     }
 
+    public static void sacarPrecioVenta(ObraArte[] obras, String nombre) {
+        final String MENSAJE_DE_NO_ENCONTRADO = "No hay ninguna obra con ese nombre.";
+        boolean huboCoincidencia = false;
+        for (ObraArte obra : obras) {
+            if (obra.getNombre().equalsIgnoreCase(nombre)) {
+                Visualizador.mostrarPrecioVenta(obras, obra);
+                huboCoincidencia = true;
+            }
+        }
+        if (!huboCoincidencia) {
+            System.out.println(MENSAJE_DE_NO_ENCONTRADO);
+        }
+    }
 }

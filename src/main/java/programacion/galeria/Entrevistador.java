@@ -4,66 +4,79 @@ import java.util.Scanner;
 
 public class Entrevistador {
 
-    
+    public static final String preguntarUsuarioObra(ObraArte[] obras) {
+        final String PETICION_OBRA = "Introduzca el nombre de la obra que desee";
+
+        String nombre = new String();
+        System.out.println(PETICION_OBRA);
+        try (Scanner teclado = new Scanner(System.in)) {
+            nombre = teclado.nextLine();
+        }
+        return nombre;
+    }
+
     public static int preguntarDatoUsuarioInt(ObraArte.Campo campo) {
         final String PETICION_VALOR = "Indique el valor de: " + campo.getVal();
-        final String PETICION_RECTIFICAR = "Introduzca un numero positivo (o 0) para el campo: "
-                + campo.getVal();
-        int num = -1;
+        final String PETICION_RECTIFICAR = "Introduzca un numero positivo (o 0) para el campo: " + campo.getVal();
+        ;
+        final String REGEX_INT = "[0-9]+";
+        String num = new String();
         try (Scanner teclado = new Scanner(System.in)) {
             do {
                 System.out.println(PETICION_VALOR);
-                num = teclado.nextInt();
-                while (!teclado.hasNextInt() | num < 0) {
+                num = teclado.nextLine();
+                if (!num.matches(REGEX_INT)) {
                     System.out.println(PETICION_RECTIFICAR);
-                    teclado.next(); // vacia el Scanner
                 }
-                return num;
-            } while (num <= 0);
+            } while (!num.matches(REGEX_INT));
         }
+        return Integer.parseInt(num);
     }
 
     public static double preguntarDatoUsuarioDouble(ObraArte.Campo campo) {
         final String PETICION_VALOR = "Indique el valor de: " + campo.getVal();
-        final String PETICION_RECTIFICAR = "Introduzca un numero positivo (o 0) para el campo: "
-                + campo.getVal();
-        double num = -1;
+        final String PETICION_RECTIFICAR = "Introduzca un numero positivo (o 0) para el campo: " + campo.getVal();
+        ;
+        final String REGEX_DOUBLE = "[0-9]+([.][0-9]+)?";
+
+        String num = new String();
         try (Scanner teclado = new Scanner(System.in)) {
 
             do {
                 System.out.println(PETICION_VALOR);
-                num = teclado.nextDouble();
-                while (!teclado.hasNextDouble() | num < 0) {
+                num = teclado.nextLine();
+                if (!num.matches(REGEX_DOUBLE)) {
                     System.out.println(PETICION_RECTIFICAR);
-                    teclado.next(); // vacia el Scanner
+                    teclado.nextLine(); // vacia el Scanner
                 }
-                return num;
-            } while (num <= 0);
+
+            } while (!num.matches(REGEX_DOUBLE));
         }
+        return Double.parseDouble(num);
     }
 
     public static String preguntarDatoUsuarioString(ObraArte.Campo campo) {
         final String PETICION_VALOR = "Indique el valor de: " + campo.getVal();
         final String PETICION_RECTIFICAR = "Introduzca un texto valido para el campo: " + campo.getVal();
+        final String REGEX_STRING = ".+";
         String palabras = new String();
         try (Scanner teclado = new Scanner(System.in)) {
             do {
                 System.out.println(PETICION_VALOR);
-                palabras = teclado.next();
-                while (!teclado.hasNext()) {
+                palabras = teclado.nextLine();
+                if (!palabras.matches(REGEX_STRING)) {
                     System.out.println(PETICION_RECTIFICAR);
-                    teclado.next(); // vacia el Scanner
+                    teclado.nextLine(); // vacia el Scanner
                 }
                 return palabras;
-            } while (!teclado.hasNext());
+            } while (!palabras.matches(REGEX_STRING));
         }
     }
 
     public static String preguntarDatoUsuarioTecnica(ObraArte.Campo campo) {
         try (Scanner teclado = new Scanner(System.in)) {
-
             final String PETICION_OPCION = "Introduzca el número para elegir la tecnica correspondiente";
-
+            final String REGEX_OPCIONES = "[0-2]";
             final int OPCION_TECNICA_OLEO = 0;
             final int OPCION_TECNICA_ACUARELA = 1;
             final int OPCION_TECNICA_CARBONCILLO = 2;
@@ -77,21 +90,19 @@ public class Entrevistador {
                     + OPCION_TECNICA_ACUARELA;
             final String PETICION_OPCION_CARBONCILLO = Pintura.Tecnica.CARBONCILLO + " - "
                     + OPCION_TECNICA_CARBONCILLO;
-            int tecnica_escogida = -1;
+            String num_tecnica_escogida = new String();
             String tecnica = new String();
             do {
                 System.out.println(PETICION_OPCION);
                 System.out.println(PETICION_OPCION_OLEO);
                 System.out.println(PETICION_OPCION_ACUARELA);
                 System.out.println(PETICION_OPCION_CARBONCILLO);
-                tecnica_escogida = teclado.nextInt();
-                while (!teclado.hasNextInt()) {
+                num_tecnica_escogida = teclado.nextLine();
+                if (!num_tecnica_escogida.matches(REGEX_OPCIONES)) {
                     System.out.println(PETICION_RECTIFICAR);
-                    teclado.next(); // vacia el Scanner
                 }
-            } while (!(tecnica_escogida == OPCION_TECNICA_OLEO | tecnica_escogida == OPCION_TECNICA_ACUARELA
-                    | tecnica_escogida == OPCION_TECNICA_CARBONCILLO));
-            switch (tecnica_escogida) {
+            } while (!num_tecnica_escogida.matches(REGEX_OPCIONES));
+            switch (Integer.parseInt(num_tecnica_escogida)) {
                 case OPCION_TECNICA_OLEO:
                     tecnica = Pintura.Tecnica.OLEO.getVal();
                     break;
@@ -102,7 +113,6 @@ public class Entrevistador {
                     tecnica = Pintura.Tecnica.CARBONCILLO.getVal();
                     break;
             }
-            tecnica = teclado.nextLine();
             return tecnica;
         }
     }
@@ -112,6 +122,7 @@ public class Entrevistador {
             final String PETICION_OPCION = "Introduzca el número para elegir el material correspondiente";
             final String PETICION_RECTIFICAR = "Introduzca un texto valido para el campo: "
                     + campo.getVal();
+            final String REGEX_OPCIONES = "[0-2]";
             final int OPCION_MATERIAL_ACERO = 0;
             final int OPCION_MATERIAL_COBRE = 1;
             final int OPCION_MATERIAL_HIERRO = 2;
@@ -120,21 +131,19 @@ public class Entrevistador {
                     + OPCION_MATERIAL_COBRE;
             final String PETICION_OPCION_HIERRO = Pintura.Tecnica.CARBONCILLO + " - "
                     + OPCION_MATERIAL_HIERRO;
-            int material_escogido = -1;
+            String num_material_escogido = new String();
             String material = new String();
             do {
                 System.out.println(PETICION_OPCION);
                 System.out.println(PETICION_OPCION_ACERO);
                 System.out.println(PETICION_OPCION_COBRE);
                 System.out.println(PETICION_OPCION_HIERRO);
-                material_escogido = teclado.nextInt();
-                while (!teclado.hasNextInt()) {
+                num_material_escogido = teclado.nextLine();
+                if (!num_material_escogido.matches(REGEX_OPCIONES)) {
                     System.out.println(PETICION_RECTIFICAR);
-                    teclado.next(); // vacia el Scanner
                 }
-            } while (!(material_escogido == OPCION_MATERIAL_ACERO | material_escogido == OPCION_MATERIAL_COBRE
-                    | material_escogido == OPCION_MATERIAL_HIERRO));
-            switch (material_escogido) {
+            } while (!num_material_escogido.matches(REGEX_OPCIONES));
+            switch (Integer.parseInt(num_material_escogido)) {
                 case OPCION_MATERIAL_ACERO:
                     material = Escultura.Material.ACERO.getVal();
                     break;
@@ -162,12 +171,11 @@ public class Entrevistador {
             do {
                 System.out.println(PREGUNTA_MODIFICAR);
                 System.out.println(PREGUNTA_SI_O_NO);
-                eligeSiNo = teclado.next();
-                if (eligeSiNo != SI && eligeSiNo != NO) {
+                eligeSiNo = teclado.nextLine();
+                if (!eligeSiNo.equals(SI) && !eligeSiNo.equals(NO)) {
                     System.out.println(PIDE_INPUT_VALIDO);
-                    teclado.next();
                 }
-            } while (eligeSiNo != SI && eligeSiNo != NO);
+            } while (!eligeSiNo.equals(SI) && !eligeSiNo.equals(NO));
             if (eligeSiNo.equals(SI)) {
                 seModifica = true;
             }
