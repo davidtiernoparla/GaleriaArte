@@ -118,24 +118,24 @@ public class Cargador {
                                                 ALTURA, PESO, Pintura.Tecnica.CARBONCILLO, PIEZAS, DESC);
                         }
 
-                } else {
-                        final String MATERIAL = Entrevistador
-                                        .preguntarDatoUsuarioMaterial(ObraArte.Campo.TEC_MAT, teclado);
-                        // creo la nueva escultura y la introduzco
-                        if (MATERIAL.equals(Escultura.Material.ACERO.getVal())) {
-                                nuevaObras[nuevaObras.length + RESTA_1] = new Escultura(ID, TIPO, NOMBRE, AUTOR,
-                                                PRECIO,
-                                                ALTURA, PESO, Escultura.Material.ACERO, PIEZAS, DESC);
-                        } else if (MATERIAL.equals(Escultura.Material.ACERO.getVal())) {
-                                nuevaObras[nuevaObras.length + RESTA_1] = new Escultura(ID, TIPO, NOMBRE, AUTOR,
-                                                PRECIO,
-                                                ALTURA, PESO, Escultura.Material.COBRE, PIEZAS, DESC);
                         } else {
-                                nuevaObras[nuevaObras.length + RESTA_1] = new Escultura(ID, TIPO, NOMBRE, AUTOR,
-                                                PRECIO,
-                                                ALTURA, PESO, Escultura.Material.HIERRO, PIEZAS, DESC);
+                                final String MATERIAL = Entrevistador
+                                                .preguntarDatoUsuarioMaterial(ObraArte.Campo.TEC_MAT, teclado);
+                                // creo la nueva escultura y la introduzco
+                                if (MATERIAL.equals(Escultura.Material.ACERO.getVal())) {
+                                        nuevaObras[nuevaObras.length + RESTA_1] = new Escultura(ID, TIPO, NOMBRE, AUTOR,
+                                                        PRECIO,
+                                                        ALTURA, PESO, Escultura.Material.ACERO, PIEZAS, DESC);
+                                } else if (MATERIAL.equals(Escultura.Material.ACERO.getVal())) {
+                                        nuevaObras[nuevaObras.length + RESTA_1] = new Escultura(ID, TIPO, NOMBRE, AUTOR,
+                                                        PRECIO,
+                                                        ALTURA, PESO, Escultura.Material.COBRE, PIEZAS, DESC);
+                                } else {
+                                        nuevaObras[nuevaObras.length + RESTA_1] = new Escultura(ID, TIPO, NOMBRE, AUTOR,
+                                                        PRECIO,
+                                                        ALTURA, PESO, Escultura.Material.HIERRO, PIEZAS, DESC);
+                                }
                         }
-                }
                 return nuevaObras;
         }
 
