@@ -1,7 +1,7 @@
 package programacion.galeria;
 
 public class Visualizador {
-     public static void visualizarObras(ObraArte[] obras) {
+    public static void visualizarObras(ObraArte[] obras) {
         final int PRIMERA_OBRA = 0;
         final boolean ES_TITULO_CAMPO = true;
         for (ObraArte obra : obras) {
@@ -18,12 +18,13 @@ public class Visualizador {
         }
     }
 
-    public void visualizarObra(ObraArte[] obras, String nombre) {
+    public static void visualizarObra(ObraArte[] obras, String nombre) {
         final String MENSAJE_DE_NO_ENCONTRADO = "No hay ninguna obra con ese nombre.";
         final boolean ES_TITULO_CAMPO = true;
         boolean huboCoincidencia = false;
         for (ObraArte obra : obras) {
-            if (obra.getNombre().toLowerCase().equals(nombre.toLowerCase())) {
+            if (obra.getNombre().equalsIgnoreCase(nombre)) {
+                imprimirTitulo(obras, ES_TITULO_CAMPO, obra);
                 if (obra.getClass().getSimpleName().equals(Pintura.NOM_CLAS_PINT)) {
                     imprimirPintura(obras, ES_TITULO_CAMPO, obra);
                     // Si no, es Escultura, e imprime datos de Escultura
@@ -31,12 +32,21 @@ public class Visualizador {
                     imprimirEscultura(obras, ES_TITULO_CAMPO, obra);
                 }
                 huboCoincidencia = true;
-            } else if (!huboCoincidencia) {
-                System.out.println(MENSAJE_DE_NO_ENCONTRADO);
             }
         }
-
+        if (!huboCoincidencia) {
+            System.out.println(MENSAJE_DE_NO_ENCONTRADO);
+        }
     }
+
+    /*
+     * private static boolean resolverSiCoincideTodo(String palabra, String
+     * ...palabras) {
+     * for (String palabra : palabras)
+     * if (!palabra.contains(palabras)) return false;
+     * return true;
+     * }
+     */
 
     private static void imprimirEscultura(ObraArte[] obras, final boolean ES_TITULO_CAMPO,
             ObraArte obra) {
@@ -309,28 +319,34 @@ public class Visualizador {
         return maxLong;
     }
 
-    public void mostrarPrecioVenta(ObraArte obra) {
-        final String MENSAJE_NOMBRE = "Nombre: " + obra.getNombre();
-        final String MENSAJE_ALTURA = "Altura(m): 5" + obra.getAltura();
-        final String MENSAJE_PESO = "Peso(t): " + obra.getPeso();
-        final String MENSAJE_PIEZAS = "Número de piezas: " + obra.getPiezas();
-        final String MENSAJE_PRECIO = "Precio(EUR): " + obra.getPrecio();
+    public static void mostrarPrecioVenta(ObraArte[] obras, ObraArte obra) {
+        final String MENSAJE_NOMBRE = "Nombre: ";
+        final String MENSAJE_ALTURA = "Altura(m): ";
+        final String MENSAJE_PESO = "Peso(t): ";
+        final String MENSAJE_PIEZAS = "Número de piezas: ";
+        final String MENSAJE_PRECIO = "Precio(EUR): ";
         final String MENSAJE_COMISION_PIEZAS_INICIO = "Importe adicional - Pieza ";
+        final String MENSAJE_COMISION_PIEZAS_FINAL = " (EUR): ";
+        final String MENSAJE_COMISION_GALERIA = "Comisión Galería (EUR): ";
+        final String MENSAJE_COMISION_ESCULTURA = "Gastos de manipulación: ";
+        final String MENSAJE_COMISION_PESO = "Importe por peso (EUR): ";
+        final String MENSAJE_COMISION_ALTURA = "Importe por altura (EUR): ";
+        final String MENSAJE_PRECIO_VENTA_NO_DESC = "Precio de venta (EUR): ";
+        final String MENSAJE_PRECIO_VENTA_DESC = "Precio final de venta (EUR): ";
+        final String MENSAJE_DESCUENTO_PINTURA = "Descuento (10% pintura EUR): ";
+        final String MENSAJE_DESCUENTO_ESCULTURA = "Descuento (20% escultura EUR): ";
         final int LIMITE_PESO = 1;
         final int LIMITE_ALTURA = 2;
         final int LIMITE_PIEZAS = 2;
         final int COMISION_LIMITE_FUERA = 100;
         final int COMISION_LIMITE_DENTRO = 20;
         final int COMISION_PIEZAS_EXTRA = 10;
-        final String MENSAJE_COMISION_PIEZAS_FINAL = "(EUR): " + COMISION_PIEZAS_EXTRA;
-        final double PRECIO_ORIGINAL = obra.getPrecio();
-        final double COMISION_GAL = PRECIO_ORIGINAL * 0.25;
-        final String MENSAJE_COMISION_GALERIA = "Comisión Galería(EUR): " + COMISION_GAL;
         final double COMISION_ESCULTURA = 50;
-        final String MENSAJE_COMISION_ESCULTURA = "Gastos de manipulación: " + COMISION_ESCULTURA;
         final double DESCUENTO_PINTURA = 0.1;
         final double DESCUENTO_ESCULTURA = 0.2;
-        double precioVenta = obra.getPrecio();
+        double precioVentaNoDesc = obra.getPrecio();
+        double precioVentaDesc = obra.getPrecio();
+        double comision_galeria = obra.getPrecio() * 0.25;
         double comision_peso = 0;
         double comision_altura = 0;
         double comision_piezas = 0;
@@ -339,61 +355,66 @@ public class Visualizador {
         } else {
             comision_peso = COMISION_LIMITE_DENTRO;
         }
-        final String MENSAJE_COMISION_PESO = "Importe por peso (EUR): " + comision_peso;
         if (obra.getAltura() > LIMITE_ALTURA) {
             comision_altura = COMISION_LIMITE_FUERA;
         } else {
             comision_altura = COMISION_LIMITE_DENTRO;
         }
-        final String MENSAJE_COMISION_ALTURA = "Importe por altura: " + comision_altura;
         if (obra.getPiezas() > LIMITE_PIEZAS) {
             comision_piezas = COMISION_PIEZAS_EXTRA * (obra.getPiezas() - LIMITE_PIEZAS);
         }
-
         // Es el precioVenta sin descuentos
-        precioVenta = PRECIO_ORIGINAL + COMISION_GAL + comision_peso + comision_altura + comision_piezas;
-        final String MENSAJE_PRECIO_VENTA = "Precio de venta (EUR): " + precioVenta;
-        final String MENSAJE_DESCUENTO_PINTURA = "Descuento (10% pintura EUR): " + (precioVenta * DESCUENTO_PINTURA);
-        final String MENSAJE_DESCUENTO_ESCULTURA = "Descuento (20% escultura EUR): "
-                + (precioVenta * DESCUENTO_PINTURA);
+        precioVentaNoDesc = precioVentaDesc + comision_galeria + comision_peso + comision_altura + comision_piezas;
         // Ahora precioVenta con descuentos
         if (obra.getTipo().equals(Pintura.NOM_CLAS_PINT)) {
-            precioVenta = precioVenta + (precioVenta * DESCUENTO_PINTURA);
+            precioVentaDesc = precioVentaNoDesc - (precioVentaNoDesc * DESCUENTO_PINTURA);
         } else {
-            precioVenta = precioVenta + (precioVenta * DESCUENTO_ESCULTURA) + COMISION_ESCULTURA;
+            precioVentaDesc = precioVentaNoDesc - (precioVentaNoDesc * DESCUENTO_ESCULTURA) + COMISION_ESCULTURA;
         }
-        final String MENSAJE_PRECIO_VENTA_FINAL = "Precio final de venta(EUR): " + precioVenta;
-        System.out.println(MENSAJE_NOMBRE);
-        System.out.println(MENSAJE_ALTURA);
-        System.out.println(MENSAJE_PESO);
-        System.out.println(MENSAJE_PIEZAS);
-        System.out.println(MENSAJE_PRECIO);
-        System.out.println(MENSAJE_COMISION_GALERIA);
-        System.out.println(MENSAJE_COMISION_PESO);
-        System.out.println(MENSAJE_COMISION_ALTURA);
+        System.out.println(MENSAJE_NOMBRE + obra.getNombre());
+        System.out.println(MENSAJE_ALTURA + obra.getAltura());
+        System.out.println(MENSAJE_PESO + obra.getPeso());
+        System.out.println(MENSAJE_PIEZAS + obra.getPiezas());
+        System.out.println(MENSAJE_PRECIO + obra.getPrecio());
+        System.out.println(MENSAJE_COMISION_GALERIA + comision_galeria);
+        System.out.println(MENSAJE_COMISION_PESO + comision_peso);
+        System.out.println(MENSAJE_COMISION_ALTURA + comision_altura);
         if (obra.getPiezas() > LIMITE_PIEZAS) {
             for (int i = 3; i < obra.getPiezas(); i++) {
-                System.out.println(MENSAJE_COMISION_PIEZAS_INICIO);
+                System.out.print(MENSAJE_COMISION_PIEZAS_INICIO);
                 System.out.print(i);
-                System.out.print(MENSAJE_COMISION_PIEZAS_FINAL);
+                System.out.print(MENSAJE_COMISION_PIEZAS_FINAL + COMISION_PIEZAS_EXTRA);
+                System.out.println();
             }
         }
-        System.out.println(MENSAJE_PRECIO_VENTA);
-        if (obra.getClass().equals(Pintura.class)) {
-            System.out.println(MENSAJE_DESCUENTO_PINTURA);
-        } else {
-            System.out.println(MENSAJE_DESCUENTO_ESCULTURA);
-            System.out.println(MENSAJE_COMISION_ESCULTURA);
-            System.out.println(MENSAJE_PRECIO_VENTA);
+        if (obra.getClass().equals(Escultura.class)) {
+            System.out.println(MENSAJE_COMISION_ESCULTURA + COMISION_ESCULTURA);
         }
+        System.out.println(MENSAJE_PRECIO_VENTA_NO_DESC + precioVentaNoDesc);
+        if (obra.getClass().equals(Pintura.class)) {
+            System.out.println(MENSAJE_DESCUENTO_PINTURA + (precioVentaNoDesc * DESCUENTO_PINTURA));
+        } else {
+            System.out.println(MENSAJE_DESCUENTO_ESCULTURA + (precioVentaNoDesc * DESCUENTO_ESCULTURA));
+        }
+        System.out.println(MENSAJE_PRECIO_VENTA_DESC + precioVentaDesc);
     }
 
-    public void mostrarEtiqueta (ObraArte obra) {
-        final String MENSAJE_NOMBRE = "Nombre: " + obra.getNombre();
-        final String MENSAJE_AUTOR = "Autor:" + obra.getAutor();
-        final String MENSAJE_DESC = "Descripción: " + obra.getDesc();
-        System.out.println(MENSAJE_NOMBRE);
-        System.out.println(MENSAJE_AUTOR);
-        System.out.println(MENSAJE_DESC);
+    public static void mostrarEtiqueta(ObraArte[] obras, String nombre) {
+        final String MENSAJE_DE_NO_ENCONTRADO = "No hay ninguna obra con ese nombre.";
+        final String MENSAJE_NOMBRE = "Nombre: ";
+        final String MENSAJE_AUTOR = "Autor: ";
+        final String MENSAJE_DESC = "Descripción: ";
+        boolean huboCoincidencia = false;
+        for (ObraArte obra : obras) {
+            if (obra.getNombre().equalsIgnoreCase(nombre)) {
+                System.out.println(MENSAJE_NOMBRE + obra.getNombre());
+                System.out.println(MENSAJE_AUTOR + obra.getAutor());
+                System.out.println(MENSAJE_DESC + obra.getDesc());
+                huboCoincidencia = true;
+            }
+        }
+        if (!huboCoincidencia) {
+            System.out.println(MENSAJE_DE_NO_ENCONTRADO);
+        }
     }
 }

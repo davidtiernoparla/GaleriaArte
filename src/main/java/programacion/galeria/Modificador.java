@@ -1,12 +1,13 @@
 package programacion.galeria;
 
+import java.util.Scanner;
+
 public class Modificador {
 
-    public ObraArte modificarObra(ObraArte[] obras, ObraArte obra) {
-        final String RESULTADO_FINAL = "La obra tras modificarse:";
+    public ObraArte modificarObra(ObraArte[] obras, ObraArte obra, Scanner teclado) {
         final String RECORDATORIO_VALOR__CAMPO_ID = "El valor actual de" + ObraArte.Campo.ID + "es:" + obra.getId();
         final String RECORDATORIO_VALOR__CAMPO_TIPO = "El valor actual de" + ObraArte.Campo.TIPO + "es:"
-                + obra.getTipo();
+                + obra.getClass().getName();
         final String RECORDATORIO_VALOR__CAMPO_NOMBRE = "El valor actual de" + ObraArte.Campo.NOMBRE + "es:"
                 + obra.getNombre();
         final String RECORDATORIO_VALOR__CAMPO_AUTOR = "El valor actual de" + ObraArte.Campo.AUTOR + "es:"
@@ -25,61 +26,60 @@ public class Modificador {
                 + obra.getPiezas();
         final String RECORDATORIO_VALOR__CAMPO_DESC = "El valor actual de" + ObraArte.Campo.DESC + "es:"
                 + obra.getDesc();
-        Visualizador visualizador = new Visualizador();
         System.out.println("La obra que desea modificar se encuentra de la siguiente manera:");
-        visualizador.visualizarObra(obras, obra.getNombre());
+        Visualizador.visualizarObra(obras, obra.getNombre());
 
         System.out.println(RECORDATORIO_VALOR__CAMPO_ID);
-        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.ID.getVal())) {
-            obra.setId(Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.ID));
+        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.ID.getVal(), teclado)) {
+            obra.setId(Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.ID, teclado));
         }
         // CUIDADO
         System.out.println(RECORDATORIO_VALOR__CAMPO_TIPO);
-        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.TIPO.getVal())) {
-            obra.setTipo(Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.TIPO));
+        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.TIPO.getVal(), teclado)) {
+            obra.setTipo(Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.TIPO, teclado));
         }
         System.out.println(RECORDATORIO_VALOR__CAMPO_NOMBRE);
-        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.NOMBRE.getVal())) {
-            obra.setNombre(Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.NOMBRE));
+        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.NOMBRE.getVal(), teclado)) {
+            obra.setNombre(Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.NOMBRE, teclado));
         }
         System.out.println(RECORDATORIO_VALOR__CAMPO_AUTOR);
-        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.AUTOR.getVal())) {
-            obra.setAutor(Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.AUTOR));
+        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.AUTOR.getVal(), teclado)) {
+            obra.setAutor(Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.AUTOR, teclado));
         }
         System.out.println(RECORDATORIO_VALOR__CAMPO_PRECIO);
-        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.PRECIO.getVal())) {
-            obra.setPrecio(Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.PRECIO));
+        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.PRECIO.getVal(), teclado)) {
+            obra.setPrecio(Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.PRECIO, teclado));
         }
         System.out.println(RECORDATORIO_VALOR__CAMPO_ALTURA);
-        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.ALTURA.getVal())) {
-            obra.setAltura(Entrevistador.preguntarDatoUsuarioDouble(ObraArte.Campo.ALTURA));
+        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.ALTURA.getVal(), teclado)) {
+            obra.setAltura(Entrevistador.preguntarDatoUsuarioDouble(ObraArte.Campo.ALTURA, teclado));
         }
         System.out.println(RECORDATORIO_VALOR__CAMPO_PESO);
-        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.PESO.getVal())) {
-            obra.setPeso(Entrevistador.preguntarDatoUsuarioDouble(ObraArte.Campo.PESO));
+        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.PESO.getVal(), teclado)) {
+            obra.setPeso(Entrevistador.preguntarDatoUsuarioDouble(ObraArte.Campo.PESO, teclado));
         }
-        if (obra.getTipo() == Pintura.NOM_CLAS_PINT) {
+        if (obra.getClass().getName().equalsIgnoreCase(Pintura.class.getName())) {
             System.out.println(RECORDATORIO_VALOR__CAMPO_TEC);
         } else {
             System.out.println(RECORDATORIO_VALOR__CAMPO_MAT);
         }
-        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.TEC_MAT.getVal())) {
-            if (obra.getTipo() == Pintura.NOM_CLAS_PINT) {
-                ((Pintura) obra).setTec(Entrevistador.preguntarDatoUsuarioTecnica(ObraArte.Campo.TEC_MAT));
+        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.TEC_MAT.getVal(), teclado)) {
+            if (obra.getClass().getName().equalsIgnoreCase(Pintura.class.getName())) {
+                ((Pintura) obra).setTec(Entrevistador.preguntarDatoUsuarioTecnica(ObraArte.Campo.TEC_MAT, teclado));
             } else {
-                ((Escultura) obra).setMat(Entrevistador.preguntarDatoUsuarioTecnica(ObraArte.Campo.TEC_MAT));
+                ((Escultura) obra).setMat(Entrevistador.preguntarDatoUsuarioTecnica(ObraArte.Campo.TEC_MAT, teclado));
             }
-            obra.setId(Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.TEC_MAT));
+            obra.setId(Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.TEC_MAT, teclado));
         }
         System.out.println(RECORDATORIO_VALOR__CAMPO_PIEZAS);
-        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.PIEZAS.getVal())) {
-            obra.setPiezas(Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.PIEZAS));
+        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.PIEZAS.getVal(), teclado)) {
+            obra.setPiezas(Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.PIEZAS, teclado));
         }
         System.out.println(RECORDATORIO_VALOR__CAMPO_DESC);
-        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.DESC.getVal())) {
-            obra.setDesc(Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.DESC));
+        if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.DESC.getVal(), teclado)) {
+            obra.setDesc(Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.DESC, teclado));
         }
-        visualizador.visualizarObra(obras, obra.getNombre());
+        Visualizador.visualizarObra(obras, obra.getNombre());
         return obra;
     }
 }

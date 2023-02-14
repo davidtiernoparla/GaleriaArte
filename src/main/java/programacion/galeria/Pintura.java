@@ -24,16 +24,16 @@ public class Pintura extends ObraArte {
     }
 
     public void setTec(String tecnicaEscogida) {
-        if (tecnicaEscogida.equals(Pintura.Tecnica.OLEO.getVal())){
+        if (tecnicaEscogida.equals(Pintura.Tecnica.OLEO.getVal())) {
             this.tec = Pintura.Tecnica.OLEO;
-        } else if (tecnicaEscogida.equals(Pintura.Tecnica.CARBONCILLO.getVal())){
+        } else if (tecnicaEscogida.equals(Pintura.Tecnica.CARBONCILLO.getVal())) {
             this.tec = Pintura.Tecnica.CARBONCILLO;
         } else {
             this.tec = Pintura.Tecnica.ACUARELA;
         }
     }
 
-    public Pintura(int id, String tipo, String nombre, String autor, int precio, double altura, double peso,
+    public Pintura(int id, String tipo, String nombre, String autor, double precio, double altura, double peso,
             Tecnica tec, int piezas, String desc) {
         super(id, tipo, nombre, autor, precio, altura, peso, piezas, desc);
         this.tec = tec;
