@@ -82,4 +82,15 @@ public class Modificador {
         Visualizador.visualizarObra(obras, obra.getNombre());
         return obra;
     }
+    private static int obtenerIdValido(ObraArte[] obras, Scanner teclado) {
+        final int LIMITE_CERO = 0;
+        int id = 0;
+        
+        do{
+        //este metodo solo devuelve int iguales o mayores que 0
+        id = Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.ID, teclado);
+        
+        } while (id > obras.length);
+        return id = 0;
+    }
 }
