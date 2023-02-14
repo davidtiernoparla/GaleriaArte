@@ -12,6 +12,5 @@ public class GaleriaArte {
         ObraArte[] obras = Cargador.cargar5ObrasInicio();
         Menu menu = new Menu();
             menu.lanzarMenu(obras, teclado);
-            teclado.nextLine();
     }
 }

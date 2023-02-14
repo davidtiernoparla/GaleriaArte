@@ -62,14 +62,13 @@ public class Menu {
         final int OPCION_VISUALIZAR__PRECIO_UNA = 5;
         final int OPCION_VISUALIZAR_ETIQUETA_UNA = 6;
         ObraArte[] obrasActualizadas = obras;
-        int opcionElegida = OPCION_SALIR;
         boolean haTerminado = false;
         while (haTerminado == false) {
         System.out.println(MENSAJE_VACIO);
         System.out.println(MENSAJE_ENTER);
         teclado.nextLine();
         mostrarMenu();
-        switch (opcionElegida = recibirInputInt(obras,teclado)) {
+        switch (recibirInputInt(obras,teclado)) {
             case (OPCION_SALIR):
             haTerminado = true;
             System.out.println(MENSAJE_DESPEDIDA);

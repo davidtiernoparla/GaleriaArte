@@ -6,7 +6,6 @@ public class Entrevistador {
 
     public static final String preguntarUsuarioObra(ObraArte[] obras, Scanner teclado) {
         final String PETICION_OBRA = "Introduzca el nombre de la obra que desee";
-
         System.out.println(PETICION_OBRA);
         String nombre = teclado.nextLine();
         return nombre;
@@ -15,7 +14,6 @@ public class Entrevistador {
     public static int preguntarDatoUsuarioInt(ObraArte.Campo campo, Scanner teclado) {
         final String PETICION_VALOR = "Indique el valor de: " + campo.getVal();
         final String PETICION_RECTIFICAR = "Introduzca un numero positivo (o 0) para el campo: " + campo.getVal();
-        ;
         final String REGEX_INT = "[0-9]+";
         String num = new String();
         do {
@@ -31,7 +29,6 @@ public class Entrevistador {
     public static double preguntarDatoUsuarioDouble(ObraArte.Campo campo, Scanner teclado) {
         final String PETICION_VALOR = "Indique el valor de: " + campo.getVal();
         final String PETICION_RECTIFICAR = "Introduzca un numero positivo (o 0) para el campo: " + campo.getVal();
-        ;
         final String REGEX_DOUBLE = "[0-9]+([.][0-9]+)?";
         String num = new String();
         do {
