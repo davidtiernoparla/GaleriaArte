@@ -15,15 +15,12 @@ public class Modificador {
                 final String RECORDATORIO_VALOR__CAMPO_PRECIO = "El valor actual de" + ObraArte.Campo.PRECIO + "es:";
                 final String RECORDATORIO_VALOR__CAMPO_ALTURA = "El valor actual de" + ObraArte.Campo.ALTURA + "es:";
                 final String RECORDATORIO_VALOR__CAMPO_PESO = "El valor actual de" + ObraArte.Campo.PESO + "es:";
-                final String RECORDATORIO_VALOR__CAMPO_TEC = "El valor actual de" + ObraArte.Campo.TEC_MAT + "es:"
-                        ;
-                final String RECORDATORIO_VALOR__CAMPO_MAT = "El valor actual de" + ObraArte.Campo.TEC_MAT + "es:"
-                        ;
+                final String RECORDATORIO_VALOR__CAMPO_TEC = "El valor actual de" + ObraArte.Campo.TEC_MAT + "es:";
+                final String RECORDATORIO_VALOR__CAMPO_MAT = "El valor actual de" + ObraArte.Campo.TEC_MAT + "es:";
                 final String RECORDATORIO_VALOR__CAMPO_PIEZAS = "El valor actual de" + ObraArte.Campo.PIEZAS + "es:";
-                final String RECORDATORIO_VALOR__CAMPO_DESC = "El valor actual de" + ObraArte.Campo.DESC + "es:"
-                        + obra.getDesc();
+                final String RECORDATORIO_VALOR__CAMPO_DESC = "El valor actual de" + ObraArte.Campo.DESC + "es:";
                 System.out.println("La obra que desea modificar se encuentra de la siguiente manera:");
-                Visualizador.visualizarObra(obras, obra.getNombre());
+                Visualizador.visualizarObra(obrasActualizadas, obra.getNombre());
                 System.out.println(RECORDATORIO_VALOR__CAMPO_ID + obra.getId());
                 if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.ID.getVal(), teclado)) {
                     obrasActualizadas = cambiarIds(obras, obra, teclado);
@@ -70,7 +67,7 @@ public class Modificador {
                 if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.PIEZAS.getVal(), teclado)) {
                     obra.setPiezas(Entrevistador.preguntarDatoUsuarioInt(ObraArte.Campo.PIEZAS, teclado));
                 }
-                System.out.println(RECORDATORIO_VALOR__CAMPO_DESC);
+                System.out.println(RECORDATORIO_VALOR__CAMPO_DESC + obra.getDesc());
                 if (Entrevistador.preguntarSiModificarCampo(ObraArte.Campo.DESC.getVal(), teclado)) {
                     obra.setDesc(Entrevistador.preguntarDatoUsuarioString(ObraArte.Campo.DESC, teclado));
                 }
@@ -101,11 +98,10 @@ public class Modificador {
         final int ID_DESTINO = obtenerIdValido(obras, teclado);
         final int RESTA_1 = 1;
         ObraArte[] obrasActualizadas = obras;
-        for (int i = 0; i < obrasActualizadas.length; i++) {
+        for (int i = 0; i < obrasActualizadas.length - RESTA_1; i++) {
             if (i == ID_DESTINO - RESTA_1) {
-                obrasActualizadas[i] = obras[ID_INICIAL_OBRA];
-            } else if (i == ID_INICIAL_OBRA - RESTA_1) {
-                obrasActualizadas[i] = obras[ID_DESTINO];
+                obrasActualizadas[i] = obraModificada;
+                obrasActualizadas[ID_INICIAL_OBRA - RESTA_1] = obras[i];
             }
         }
         return obrasActualizadas;
@@ -130,15 +126,5 @@ public class Modificador {
             }
         }
         return obras;
-    }
-
-    private static ObraArte[] cambiarTipo(ObraArte[] obras, String nombreObraModificada, Scanner teclado) {
-        final String TIPO_FINAL = Cargador.devolverUnTipoPosible(obras, teclado);
-        ObraArte[] obrasActualizadas = obras;
-
-        for (ObraArte obra : obras) {
-
-        }
-        return obrasActualizadas;
     }
 }
