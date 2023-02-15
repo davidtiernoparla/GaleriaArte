@@ -139,7 +139,7 @@ public class Cargador {
                 return nuevaObras;
         }
 
-        private static String devolverUnTipoPosible(ObraArte[] obras, Scanner teclado) {
+        public static String devolverUnTipoPosible(ObraArte[] obras, Scanner teclado) {
                 final String POSIBLE_TIPO_PINTURA = "Pintura";
                 final String POSIBLE_TIPO_ESCULTURA = "Escultura";
                 final String MENSAJE_TIPOS_POSIBLES = "La obras puede ser de tipo " + POSIBLE_TIPO_PINTURA + " o "

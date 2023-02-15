@@ -64,41 +64,46 @@ public class Menu {
         ObraArte[] obrasActualizadas = obras;
         boolean haTerminado = false;
         while (haTerminado == false) {
-        System.out.println(MENSAJE_VACIO);
-        System.out.println(MENSAJE_ENTER);
-        teclado.nextLine();
-        mostrarMenu();
-        switch (recibirInputInt(obras,teclado)) {
-            case (OPCION_SALIR):
-            haTerminado = true;
-            System.out.println(MENSAJE_DESPEDIDA);
-                break;
-            // Visualizar las obras de arte existentes. Permite Conocer todas las expuestas.
-            case (OPCION_VISUALIZAR_DATOS_TODAS):
-                Visualizador.visualizarObras(obrasActualizadas);
-                break;
-            // Dar de alta una nueva obra de arte
-            case (OPCION_DAR_ALTA_UNA):
-                obrasActualizadas = Cargador.insertarObraArte(obrasActualizadas, teclado);
-                break;
-            // Modificar los datos de las obras expuestas, pide cual modificar al usuario
-            case (OPCION_MODIFICAR_UNA):
-                break;
-            // Visualizar los datos de las obras expuestas, pide cual mostrar al usuario
-            case (OPCION_VISUALIZAR_DATOS_UNA):
-                Visualizador.visualizarObra(obrasActualizadas, Entrevistador.preguntarUsuarioObra(obrasActualizadas, teclado));
-                break;
-            // Obtener el precio de las obras de arte expuestas, pide cual mostrar al
-            // usuario
-            case (OPCION_VISUALIZAR__PRECIO_UNA):
-                ObraArte.sacarPrecioVenta(obrasActualizadas, Entrevistador.preguntarUsuarioObra(obrasActualizadas, teclado));
-                break;
-            // Mostrar una etiqueta para clasificar una de las obras expuestas y dar
-            // informcion extra
-            case (OPCION_VISUALIZAR_ETIQUETA_UNA):
-                Visualizador.mostrarEtiqueta(obrasActualizadas, Entrevistador.preguntarUsuarioObra(obrasActualizadas, teclado));
-                break;
+            System.out.println(MENSAJE_VACIO);
+            System.out.println(MENSAJE_ENTER);
+            teclado.nextLine();
+            mostrarMenu();
+            switch (recibirInputInt(obras, teclado)) {
+                case (OPCION_SALIR):
+                    haTerminado = true;
+                    System.out.println(MENSAJE_DESPEDIDA);
+                    break;
+                // Visualizar las obras de arte existentes. Permite Conocer todas las expuestas.
+                case (OPCION_VISUALIZAR_DATOS_TODAS):
+                    Visualizador.visualizarObras(obrasActualizadas);
+                    break;
+                // Dar de alta una nueva obra de arte
+                case (OPCION_DAR_ALTA_UNA):
+                    obrasActualizadas = Cargador.insertarObraArte(obrasActualizadas, teclado);
+                    break;
+                // Modificar los datos de las obras expuestas, pide cual modificar al usuario
+                case (OPCION_MODIFICAR_UNA):
+                    obrasActualizadas = Modificador.modificarObra(obrasActualizadas,
+                            Entrevistador.preguntarUsuarioObra(obrasActualizadas, teclado), teclado);
+                    break;
+                // Visualizar los datos de las obras expuestas, pide cual mostrar al usuario
+                case (OPCION_VISUALIZAR_DATOS_UNA):
+                    Visualizador.visualizarObra(obrasActualizadas,
+                            Entrevistador.preguntarUsuarioObra(obrasActualizadas, teclado));
+                    break;
+                // Obtener el precio de las obras de arte expuestas, pide cual mostrar al
+                // usuario
+                case (OPCION_VISUALIZAR__PRECIO_UNA):
+                    ObraArte.sacarPrecioVenta(obrasActualizadas,
+                            Entrevistador.preguntarUsuarioObra(obrasActualizadas, teclado));
+                    break;
+                // Mostrar una etiqueta para clasificar una de las obras expuestas y dar
+                // informcion extra
+                case (OPCION_VISUALIZAR_ETIQUETA_UNA):
+                    Visualizador.mostrarEtiqueta(obrasActualizadas,
+                            Entrevistador.preguntarUsuarioObra(obrasActualizadas, teclado));
+                    break;
+            }
         }
-    }
     }
 }
