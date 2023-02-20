@@ -151,11 +151,11 @@ public class Entrevistador {
             System.out.println(PREGUNTA_MODIFICAR);
             System.out.println(PREGUNTA_SI_O_NO);
             eligeSiNo = teclado.nextLine();
-            if (!eligeSiNo.equals(SI) && !eligeSiNo.equals(NO)) {
+            if (!eligeSiNo.equalsIgnoreCase(SI) && !eligeSiNo.equalsIgnoreCase(NO)) {
                 System.out.println(PIDE_INPUT_VALIDO);
             }
-        } while (!eligeSiNo.equals(SI) && !eligeSiNo.equals(NO));
-        if (eligeSiNo.equals(SI)) {
+        } while (!eligeSiNo.equalsIgnoreCase(SI) && !eligeSiNo.equalsIgnoreCase(NO));
+        if (eligeSiNo.equalsIgnoreCase(SI)) {
             seModifica = true;
         }
         return seModifica;

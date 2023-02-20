@@ -33,6 +33,9 @@ public class Escultura extends ObraArte {
             this.mat = Escultura.Material.HIERRO;
         }
     }
+    public void setMat(Material material) {
+       this.mat = material;
+    }
 
     public Escultura(int id, String tipo, String nombre, String autor, double precio, double altura, double peso,
             Material mat, int piezas, String desc) {
