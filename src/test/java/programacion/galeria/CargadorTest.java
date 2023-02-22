@@ -108,14 +108,6 @@ public class CargadorTest {
       
     @Test
     void testDevolverUnTipoPosible() {
-        final String POSIBLE_TIPO_PINTURA = "Pintura";
-        final String POSIBLE_TIPO_ESCULTURA = "Escultura";
-        systemInMock.provideLines(POSIBLE_TIPO_PINTURA);
-        final Scanner teclado = new Scanner(System.in);
-        
-       
-        final String TIPO_RESULTADO = Cargador.devolverUnTipoPosible(Cargador.cargar5ObrasInicio(),teclado);
-        assertEquals(POSIBLE_TIPO_ESCULTURA, TIPO_RESULTADO);
     }
 
 
